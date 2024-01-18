@@ -1,13 +1,22 @@
-import React, { ChangeEvent, Children, useState } from "react";
+import React, { ChangeEvent } from "react";
+import { CreateWorkoutProps } from "../../../utils";
 
-const CreateWorkout = ({wName, setWName, wIntensity, setWIntensity, wLevel, setWLevel, handleWSubmit}) => {
 
+const CreateWorkout: React.FC<CreateWorkoutProps> = ({
+  wName,
+  setWName,
+  wIntensity,
+  setWIntensity,
+  wLevel,
+  setWLevel,
+  handleWSubmit,
+}) => {
   const handleIntensityChange = (
     event: ChangeEvent<HTMLInputElement>
   ): void => {
     event.preventDefault();
     setWIntensity(event.target.value);
-    console.log(wIntensity)
+    console.log(wIntensity);
   };
 
   const handleNameChange = (event: ChangeEvent<HTMLInputElement>): void => {
@@ -15,10 +24,12 @@ const CreateWorkout = ({wName, setWName, wIntensity, setWIntensity, wLevel, setW
     setWName(event.target.value);
   };
 
-  const handleLevelChange = (event: ChangeEvent<HTMLSelectElement>): void => {
+  const handleLevelChange = (
+    event: ChangeEvent<HTMLSelectElement>
+  ): void => {
     event.preventDefault();
     setWLevel(event.target.value);
-};
+  };
 
   return (
     <div>
@@ -44,7 +55,11 @@ const CreateWorkout = ({wName, setWName, wIntensity, setWIntensity, wLevel, setW
         </label>
         <label>
           Workout level:
-          <select className="bg-slate-200 p-2 w-48 rounded-lg" value={wLevel} onChange={handleLevelChange}>
+          <select
+            className="bg-slate-200 p-2 w-48 rounded-lg"
+            value={wLevel}
+            onChange={handleLevelChange}
+          >
             <option value="Beginner"> Beginner </option>
             <option value="Intermediate"> Intermediate </option>
             <option value="Advanced"> Advanced </option>
