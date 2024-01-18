@@ -1,14 +1,15 @@
 import React from "react";
 import ExerciseCard from "./ExerciseCard";
+import Accordion from "./Accordion";
 
 const ExerciseList = ({data}) => {
   return (
-    <div>
-     {data.map((e, index) => {
-        return (
-            <div key={index}> <ExerciseCard data={e}/></div>
-        )
-     })}
+    <div className="border border-red-500 m-4">
+
+
+    <Accordion items={data} />
+
+     
     </div>
   );
 };
