@@ -2,6 +2,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { MoodContext } from "../../MoodContext";
 import ActiveWorkoutCard from "./ActiveWorkoutCard";
+import { useNavigate } from "react-router-dom";
 
 const ActiveWorkoutPage: React.FC = () => {
   const { workout } = useContext(MoodContext);
@@ -17,7 +18,6 @@ const ActiveWorkoutPage: React.FC = () => {
       interval = setInterval(() => {
         setTimer((prevTimer) => {
           if (prevTimer === 0) {
-            // Switch between set and break
             return currentSet % 2 === 1 ? 3 : 5;
           } else {
             return prevTimer - 1;
@@ -37,8 +37,14 @@ const ActiveWorkoutPage: React.FC = () => {
     setIsStarted(false);
   };
 
+  const navigate = useNavigate();
+
+  const handleFinishWorkout = () => {
+    navigate("/FinishedWorkout");
+  };
+
   return (
-    <div>
+    <div className="flex flex-col">
       <h1>Active Workout: {workout.workoutName}</h1>
       <h2>Intensity: {workout.workoutIntensity}</h2>
       <h2>Workout Level: {workout.workoutLevel}</h2>
@@ -57,8 +63,11 @@ const ActiveWorkoutPage: React.FC = () => {
           />
         </div>
       ))}
-      <button onClick={handleFinishClick} disabled={!isStarted}>
-        {timer === 0 ? "Next set/break" : "Finish"}
+      <button className="m-4" onClick={handleFinishClick} disabled={!isStarted}>
+        {timer === 0 ? "Next set/break" : "Stop Workout"}
+      </button>
+      <button onClick={handleFinishWorkout} disabled={isStarted}>
+        Finish Workout
       </button>
     </div>
   );
