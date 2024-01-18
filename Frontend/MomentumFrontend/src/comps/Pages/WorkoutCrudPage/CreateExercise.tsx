@@ -1,6 +1,8 @@
 import React, { ChangeEvent, useState } from "react";
+import { CreateExerciseProps } from "../../../utils";
 
-const CreateExercise = ({
+
+const CreateExercise: React.FC<CreateExerciseProps> = ({
   eName,
   setEName,
   eIntensity,
@@ -20,10 +22,10 @@ const CreateExercise = ({
 
   const handleExistingExerciseChange = (event: ChangeEvent<HTMLSelectElement>) => {
     const selectedExercise = existingExercises.find(exercise => exercise.exerciseName === event.target.value);
-    setEName(selectedExercise.exerciseName);
-    setEIntensity(selectedExercise.exerciseIntensity);
-    setSets(selectedExercise.exerciseSets);
-    setReps(selectedExercise.exerciseReps);
+    setEName(selectedExercise?.exerciseName || "");
+    setEIntensity(selectedExercise?.exerciseIntensity || 0);
+    setSets(selectedExercise?.exerciseSets || 0);
+    setReps(selectedExercise?.exerciseReps || 0);
   };
 
   return (
@@ -94,7 +96,9 @@ const CreateExercise = ({
             </label>
           </>
         )}
-        <button type="submit">{useExistingExercise ? "Add existing exercise" : "Add new exercise"}</button>
+        <button type="submit">
+          {useExistingExercise ? "Add existing exercise" : "Add new exercise"}
+        </button>
       </form>
     </div>
   );
