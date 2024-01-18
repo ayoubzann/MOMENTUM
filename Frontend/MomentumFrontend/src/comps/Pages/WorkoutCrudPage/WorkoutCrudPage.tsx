@@ -1,33 +1,33 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState, FormEvent } from "react";
 import CreateWorkout from "./CreateWorkout";
 import CreateExercise from "./CreateExercise";
-import { getAllExercises, postWorkout } from "../../../utils";
+import { Exercise, Workout, getAllExercises, postWorkout } from "../../../utils";
 import ExerciseList from "../WorkoutListPage/ExerciseList";
 
-const WorkoutCrudPage = () => {
-  const [wName, setWName] = useState("");
-  const [wIntensity, setWIntensity] = useState(0);
-  const [wLevel, setWLevel] = useState("Beginner");
-  const [eName, setEName] = useState("");
-  const [eIntensity, setEIntensity] = useState(0);
-  const [sets, setSets] = useState(0);
-  const [reps, setReps] = useState(0);
-  const [exerciseList, setExerciseList] = useState([]);
-  const [workout, setWorkout] = useState({});
-  const [existingExercises, setExistingExercises] = useState([]);
 
+const WorkoutCrudPage: React.FC = () => {
+  const [wName, setWName] = useState<string>("");
+  const [wIntensity, setWIntensity] = useState<number>(0);
+  const [wLevel, setWLevel] = useState<string>("Beginner");
+  const [eName, setEName] = useState<string>("");
+  const [eIntensity, setEIntensity] = useState<number>(0);
+  const [sets, setSets] = useState<number>(0);
+  const [reps, setReps] = useState<number>(0);
+  const [exerciseList, setExerciseList] = useState<Exercise[]>([]);
+  const [workout, setWorkout] = useState<Workout | null>(null);
+  const [existingExercises, setExistingExercises] = useState<Exercise[]>([]);
 
-  useEffect(()=>{
-    const fetchExercises = async() => {
-     setExistingExercises(await getAllExercises());
-    }
+  useEffect(() => {
+    const fetchExercises = async () => {
+      setExistingExercises(await getAllExercises());
+    };
 
     fetchExercises();
-  }, [])
+  }, []);
 
-  const handleESubmit = (event) => {
+  const handleESubmit = (event: FormEvent) => {
     event.preventDefault();
-    const exerciseArr = [
+    const exerciseArr: Exercise[] = [
       ...exerciseList,
       {
         exerciseName: eName,
@@ -39,9 +39,9 @@ const WorkoutCrudPage = () => {
     setExerciseList(exerciseArr);
   };
 
-  const handleWSubmit = (event) => {
+  const handleWSubmit = (event: FormEvent) => {
     event.preventDefault();
-    const workoutToAdd = {
+    const workoutToAdd: Workout = {
       workoutName: wName,
       workoutIntensity: wIntensity,
       workoutLevel: wLevel,
@@ -51,38 +51,38 @@ const WorkoutCrudPage = () => {
   };
 
   useEffect(() => {
-    if (Object.keys(workout).length > 0) {
+    if (workout !== null) {
       postWorkout(workout);
     }
   }, [workout]);
 
   return (
     <div>
-    <h1>Design your own workout</h1>
-    <CreateExercise
-      eName={eName}
-      setEName={setEName}
-      eIntensity={eIntensity}
-      setEIntensity={setEIntensity}
-      sets={sets}
-      setSets={setSets}
-      reps={reps}
-      setReps={setReps}
-      handleESubmit={handleESubmit}
-      existingExercises={existingExercises}
-    />
-    <h2>Current exercises:</h2>
-    <ExerciseList data={exerciseList} />
-    <CreateWorkout
-      wName={wName}
-      setWName={setWName}
-      wIntensity={wIntensity}
-      setWIntensity={setWIntensity}
-      wLevel={wLevel}
-      setWLevel={setWLevel}
-      handleWSubmit={handleWSubmit}
-    />
-  </div>
+      <h1>Design your own workout</h1>
+      <CreateExercise
+        eName={eName}
+        setEName={setEName}
+        eIntensity={eIntensity}
+        setEIntensity={setEIntensity}
+        sets={sets}
+        setSets={setSets}
+        reps={reps}
+        setReps={setReps}
+        handleESubmit={handleESubmit}
+        existingExercises={existingExercises}
+      />
+      <h2>Current exercises:</h2>
+      <ExerciseList data={exerciseList} />
+      <CreateWorkout
+        wName={wName}
+        setWName={setWName}
+        wIntensity={wIntensity}
+        setWIntensity={setWIntensity}
+        wLevel={wLevel}
+        setWLevel={setWLevel}
+        handleWSubmit={handleWSubmit}
+      />
+    </div>
   );
 };
 
