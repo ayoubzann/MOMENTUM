@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { GoChevronDown, GoChevronLeft } from "react-icons/go";
+import { ExerciseCardProps } from "../../../utils";
 
-function ExerciseCard({ items }) {
-  const [expandedIndex, setExpandedIndex] = useState(-1);
+const ExerciseCard: React.FC<ExerciseCardProps> = ({ items }) => {
+  const [expandedIndex, setExpandedIndex] = useState<number>(-1);
 
-  const handleClick = (nextIndex) => {
+  const handleClick = (nextIndex: number) => {
     if (expandedIndex === nextIndex) {
       setExpandedIndex(-1);
     } else {
@@ -22,7 +23,6 @@ function ExerciseCard({ items }) {
       </span>
     );
 
-    
     return (
       <div className="m-2" key={index}>
         <div
@@ -45,6 +45,6 @@ function ExerciseCard({ items }) {
   });
 
   return <div>{renderedItems}</div>;
-}
+};
 
 export default ExerciseCard;
