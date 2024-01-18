@@ -1,15 +1,10 @@
 using Microsoft.EntityFrameworkCore.Migrations.Operations;
+using MomentumBackend.Models;
 
 namespace MomentumBackend.Data;
 
 public interface IDbRepository
 {
-    GetExerciseById
-    GetAllExercises
-    GetWorkoutById
-    GetAllWorkouts
-    AddWorkout
-    AddExercise
-    DeleteExercise
-    DeleteWorkout
+    Workout AddWorkout();
+    Exercise AddExercise();
 }
