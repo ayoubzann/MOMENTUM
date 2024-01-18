@@ -114,13 +114,6 @@ public class MomentumController : ControllerBase
         _repo.DeleteWorkout(workoutId);
         return Ok("Workout deleted successfully");
     }
-
-
-
-
-
-
-
 }
 
 
