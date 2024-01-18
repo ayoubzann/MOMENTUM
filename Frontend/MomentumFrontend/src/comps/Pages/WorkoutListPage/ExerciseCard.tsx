@@ -29,15 +29,14 @@ const ExerciseCard: React.FC<ExerciseCardProps> = ({ items }) => {
           className="flex rounded-3xl justify-between p-3 bg-gray-50  items-center cursor-pointer"
           onClick={() => handleClick(index)}
         >
-          {item.exerciseName}
+          <h2 className="text-xl">{item.exerciseName}</h2>
           {icon}
         </div>
         {isExpanded && (
-          <div className="border-b p-5 ">
-            <p>Intensity: {item.exerciseIntensity}</p>
-            <p>Sets: {item.exerciseSets}</p>
-            <p>Reps: {item.exerciseReps}</p>
-            <br />
+          <div className=" p-5 text-lg">
+            <h2 className="">Intensity: {item.exerciseIntensity}</h2>
+            <h2>Sets: {item.exerciseSets}</h2>
+            <h2>Reps: {item.exerciseReps}</h2>
           </div>
         )}
       </div>

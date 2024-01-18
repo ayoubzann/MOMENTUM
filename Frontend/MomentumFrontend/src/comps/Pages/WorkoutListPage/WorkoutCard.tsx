@@ -15,13 +15,15 @@ const WorkoutCard: React.FC<WorkoutCardProps> = ({ data, editor, onDelete }) => 
   };
 
   return (
-    <div className="border p-2 m-4">
-      <h2 className="text-2xl">{data.workoutName}</h2>
-      <h3 className="text-xl">Intensity: {data.workoutIntensity}</h3>
-      <h3 className="text-xl">Workout level: {data.workoutLevel}</h3>
-      {editor && <button onClick={() => onDelete(data.workoutName)}>Delete</button>}
+    <div className=" rounded-lg p-5 bg-orange-300 m-4 w-72">
+      <h2 className="text-2xl p-2 mb-2">{data.workoutName}</h2>
+      <div className='p-5 bg-white rounded-full'>
+      <h2 className="text-xl">Intensity scale: <p>{data.workoutIntensity}</p></h2>
+      <h2 className="text-xl">Workout level: <br/><p>{data.workoutLevel}</p></h2>
+      </div>
+      {editor && <button className='mt-4 bg-red-500 font-extrabold text-white' onClick={() => onDelete(data.workoutName)}>Delete</button>}
       <ExerciseList data={data.exercises} />
-      <button onClick={handleStartWorkout}>START</button>
+      <button className='bg-emerald-300' onClick={handleStartWorkout}><h2>START</h2></button>
     </div>
   );
 };

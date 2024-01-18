@@ -2,12 +2,69 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@font-face {
+  font-family: 'Outfit-ExtraBold';
+  src: url('./assets/Outfit-ExtraBold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Outfit-Bold';
+  src: url('./assets/Outfit-Bold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Outfit-Light';
+  src: url('./assets/Outfit-Light.ttf') format('truetype');
+}
 
-  color-scheme: light dark;
+@keyframes floatIn {
+  0% {
+    opacity: 0;
+    transform: translateY(500px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.floatIn {
+  animation: floatIn 4s ease-out backwards;
+}
+@keyframes floatInRocket {
+  0% {
+    opacity: 0;
+    transform: translateY(500px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.floatInRocket {
+  animation: floatIn 2s ease-out backwards;
+  animation-delay: 4s;
+}
+@keyframes floatInEnd {
+  0% {
+    opacity: 0;
+    transform: translateY(500px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.floatInEnd {
+  animation: floatIn 2s ease-out backwards;
+  animation-delay: 6s;
+}
+
+:root {
+  font-family:'Outfit', Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: normal;
+
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
 
@@ -35,8 +92,15 @@ body {
 }
 
 h1 {
+  font-family: 'Outfit-ExtraBold';
   font-size: 3.2em;
   line-height: 1.1;
+}
+h2{
+font-family: 'Outfit-Bold';
+}
+p{
+  font-family: 'Outfit-Light'
 }
 
 button {

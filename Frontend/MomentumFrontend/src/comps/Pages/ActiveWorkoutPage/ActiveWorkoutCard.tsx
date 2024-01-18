@@ -8,7 +8,7 @@ type ActiveWorkoutCardProps = {
   isFocused: boolean;
   isRunning: boolean;
   isBreak: boolean;
-}
+};
 
 const ActiveWorkoutCard: React.FC<ActiveWorkoutCardProps> = ({
   items,
@@ -17,34 +17,41 @@ const ActiveWorkoutCard: React.FC<ActiveWorkoutCardProps> = ({
   isBreak,
 }) => {
   return (
-    <div className={`m-2 ${isFocused ? "focused-exercise" : ""}`}>
-      {items.map((item, index) => {
-        const icon = (
-          <span className="text-2xl">
-            {isFocused ? <GoChevronDown /> : <GoChevronLeft />}
-          </span>
-        );
+    <div className="w-96">
+      <div className={`m-2 ${isFocused ? "focused-exercise" : ""}`}>
+        {items.map((item, index) => {
+          const icon = (
+            <span className="text-2xl">
+              {isFocused ? <GoChevronDown /> : <GoChevronLeft />}
+            </span>
+          );
 
-        return (
-          <div
-            className={`flex rounded-3xl justify-between p-3 ${
-              isRunning ? (isBreak ? "bg-yellow-200" : "bg-green-200") : "bg-gray-50"
-            } items-center cursor-pointer`}
-            key={index}
-          >
-            {item.exerciseName}
-            {icon}
-            {isFocused && isRunning && (
-              <div className="border-b p-5">
-                <p>Intensity: {item.exerciseIntensity}</p>
-                <p>Sets: {item.exerciseSets}</p>
-                <p>Reps: {item.exerciseReps}</p>
-                <br />
-              </div>
-            )}
-          </div>
-        );
-      })}
+          return (
+            <div
+              className={`flex rounded-3xl justify-between p-3 ${
+                isRunning
+                  ? isBreak
+                    ? "bg-yellow-200"
+                    : "bg-green-200"
+                  : "bg-gray-50"
+              } items-center cursor-pointer`}
+              key={index}
+            >
+              <div></div>
+              <p className="text-xl">{item.exerciseName}</p>
+              {icon}
+              {isFocused && isRunning && (
+                <div className="border-b p-5 text-xl">
+                  <h2>Intensity: {item.exerciseIntensity}</h2>
+                  <p>Sets: {item.exerciseSets}</p>
+                  <p>Reps: {item.exerciseReps}</p>
+                  <br />
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };

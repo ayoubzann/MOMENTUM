@@ -32,20 +32,20 @@ const CreateWorkout: React.FC<CreateWorkoutProps> = ({
   };
 
   return (
-    <div>
+    <div className="w-96 bg-orange-100 p-5 rounded-lg flex flex-col justify-center">
       <h2 className="text-2xl">Finishing touches...</h2>
       <form onSubmit={handleWSubmit} className="flex flex-col">
-        <label>
-          Workout name:
+        <label className="p-2 flex flex-col justify-center text-xl">
+          <h2>Workout name:</h2>
           <input
             value={wName}
             onChange={handleNameChange}
-            className="rounded-lg p-2 bg-slate-200"
+            className="rounded-lg p-2 bg-slate-200 "
             type="text"
           />
         </label>
-        <label>
-          Intensity (1-10):
+        <label className="p-2 flex flex-col justify-center text-xl">
+         <h2> Intensity (1-10):</h2>
           <input
             value={wIntensity}
             onChange={handleIntensityChange}
@@ -53,10 +53,10 @@ const CreateWorkout: React.FC<CreateWorkoutProps> = ({
             type="number"
           />
         </label>
-        <label>
-          Workout level:
+        <label className="p-2 flex flex-col  justify-center text-xl">
+          <h2>Workout level:</h2>
           <select
-            className="bg-slate-200 p-2 w-48 rounded-lg"
+            className="bg-slate-200 p-2 rounded-lg"
             value={wLevel}
             onChange={handleLevelChange}
           >
@@ -65,7 +65,8 @@ const CreateWorkout: React.FC<CreateWorkoutProps> = ({
             <option value="Advanced"> Advanced </option>
           </select>
         </label>
-        <button type="submit"> Add workout </button>
+        <br/>
+        <button className="bg-orange-200" type="submit"> <h2 className="text-lg">Add workout</h2> </button>
       </form>
     </div>
   );

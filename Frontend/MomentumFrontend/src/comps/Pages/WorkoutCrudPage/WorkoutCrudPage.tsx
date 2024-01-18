@@ -1,11 +1,14 @@
 import React, { useEffect, useState, FormEvent } from "react";
 import CreateWorkout from "./CreateWorkout";
 import CreateExercise from "./CreateExercise";
-import { Exercise, Workout, getAllExercises, postWorkout } from "../../../utils";
+import {
+  Exercise,
+  Workout,
+  getAllExercises,
+  postWorkout,
+} from "../../../utils";
 import ExerciseList from "../WorkoutListPage/ExerciseList";
-import { useNavigate } from 'react-router-dom';
-
-
+import { useNavigate } from "react-router-dom";
 
 const WorkoutCrudPage: React.FC = () => {
   const [wName, setWName] = useState<string>("");
@@ -46,15 +49,20 @@ const WorkoutCrudPage: React.FC = () => {
     setExerciseList(exerciseArr);
   };
 
-  const handleWSubmit = (event: FormEvent) => {
+  const handleWSubmit = async (event: FormEvent) => {
     event.preventDefault();
-    const workoutToAdd: Workout = {
-      workoutName: wName,
-      workoutIntensity: wIntensity,
-      workoutLevel: wLevel,
-      exercises: exerciseList,
-    };
-    setWorkout(workoutToAdd);
+    try {
+      const workoutToAdd: Workout = {
+        workoutName: wName,
+        workoutIntensity: wIntensity,
+        workoutLevel: wLevel,
+        exercises: exerciseList,
+      };
+      await postWorkout(workoutToAdd);
+      navigate('/workouts');
+    } catch (error) {
+      console.error("Workout submission failed:", error);
+    }
   };
 
   useEffect(() => {
@@ -63,12 +71,11 @@ const WorkoutCrudPage: React.FC = () => {
     }
   }, [workout]);
 
-
-
   return (
-    <div>
+    <div className="flex flex-col w-3/4 mx-auto items-center justify-center">
       <button onClick={handleGoBack}>Go back</button>
-      <h1>Design your own workout</h1>
+      <h1 className="m-4">Design your own workout</h1>
+      <br></br>
       <CreateExercise
         eName={eName}
         setEName={setEName}
@@ -81,8 +88,10 @@ const WorkoutCrudPage: React.FC = () => {
         handleESubmit={handleESubmit}
         existingExercises={existingExercises}
       />
-      <h2>Current exercises:</h2>
-      <ExerciseList data={exerciseList} />
+      <div className="bg-orange-100 m-5 w-96 rounded-lg p-4">
+        <h2 className="text-xl">Current exercises:</h2>
+        <ExerciseList data={exerciseList} />
+      </div>
       <CreateWorkout
         wName={wName}
         setWName={setWName}

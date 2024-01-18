@@ -56,11 +56,11 @@ const WorkoutListPage: React.FC = () => {
   const filteredWorkouts: Workout[] = filterWorkouts();
 
   return (
-    <>
-      <Link to="/AddWorkouts"> Add Workout</Link>
-      <button onClick={() => setEditor(!editor)}> Edit workout list </button>
+    <div className="flex flex-col">
+      <Link to="/AddWorkouts" className="bg-green-100 my-4 p-2 text-black"> <p className="text-xl">Add Workout</p></Link>
+      <button className="text-xl bg-yellow-100" onClick={() => setEditor(!editor)}> Edit workout list </button>
       <WorkoutList data={filteredWorkouts} editor={editor} onDelete={handleDelete} />
-    </>
+    </div>
   );
 };
 

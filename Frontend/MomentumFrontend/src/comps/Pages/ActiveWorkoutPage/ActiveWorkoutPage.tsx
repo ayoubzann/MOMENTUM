@@ -44,15 +44,16 @@ const ActiveWorkoutPage: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col">
-      <h1>Active Workout: {workout.workoutName}</h1>
+    <div className="flex flex-col items-center justify-center h-screen">
+      <h2 className="text-xl">Selected Workout: </h2>
+        <h1 className="text-orange-600">{workout.workoutName}</h1>
       <h2>Intensity: {workout.workoutIntensity}</h2>
       <h2>Workout Level: {workout.workoutLevel}</h2>
-      <button onClick={handleStartClick} disabled={isStarted}>
+      <button className="bg-emerald-200" onClick={handleStartClick} disabled={isStarted}>
         Start Workout
       </button>
-      <p>Time remaining: {timer}</p>
-      <h3>Exercises:</h3>
+      <h2 className="text-xl p-10">Time remaining: <h1 className="text-orange-500">{timer}</h1></h2>
+      <h2 className="text-xl">Exercises:</h2>
       {workout.exercises.map((exercise, index) => (
         <div key={index}>
           <ActiveWorkoutCard
@@ -63,11 +64,11 @@ const ActiveWorkoutPage: React.FC = () => {
           />
         </div>
       ))}
-      <button className="m-4" onClick={handleFinishClick} disabled={!isStarted}>
-        {timer === 0 ? "Next set/break" : "Stop Workout"}
+      <button className="m-4 bg-red-300" onClick={handleFinishClick} disabled={!isStarted}>
+        <h2 className="text-xl">{timer === 0 ? "Next set/break" : "Stop Workout"}</h2>
       </button>
-      <button onClick={handleFinishWorkout} disabled={isStarted}>
-        Finish Workout
+      <button className="m-4 bg-orange-200" onClick={handleFinishWorkout} disabled={isStarted}>
+        <h2 className="text-xl">Finish Workout</h2>
       </button>
     </div>
   );

@@ -4,7 +4,7 @@ import { WorkoutListProps } from '../../../utils';
 
 const WorkoutList: React.FC<WorkoutListProps> = ({ data, editor, onDelete }) => {
   return (
-    <div>
+    <div >
       {data.map((w, index) => (
         <div key={index}>
           <WorkoutCard editor={editor} onDelete={onDelete} data={w} />
