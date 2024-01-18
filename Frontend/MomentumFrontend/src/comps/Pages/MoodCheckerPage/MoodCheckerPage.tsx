@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import {MoodContext} from "../../NumberContext";
+import {MoodContext} from "../../MoodContext";
 import { Link } from "react-router-dom";
 
 const MoodCheckerPage = () => {

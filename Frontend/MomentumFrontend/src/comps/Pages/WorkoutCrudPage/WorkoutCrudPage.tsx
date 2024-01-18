@@ -3,6 +3,8 @@ import CreateWorkout from "./CreateWorkout";
 import CreateExercise from "./CreateExercise";
 import { Exercise, Workout, getAllExercises, postWorkout } from "../../../utils";
 import ExerciseList from "../WorkoutListPage/ExerciseList";
+import { useNavigate } from 'react-router-dom';
+
 
 
 const WorkoutCrudPage: React.FC = () => {
@@ -17,6 +19,11 @@ const WorkoutCrudPage: React.FC = () => {
   const [workout, setWorkout] = useState<Workout | null>(null);
   const [existingExercises, setExistingExercises] = useState<Exercise[]>([]);
 
+  const navigate = useNavigate();
+
+  const handleGoBack = () => {
+    navigate(-1);
+  };
   useEffect(() => {
     const fetchExercises = async () => {
       setExistingExercises(await getAllExercises());
@@ -56,8 +63,11 @@ const WorkoutCrudPage: React.FC = () => {
     }
   }, [workout]);
 
+
+
   return (
     <div>
+      <button onClick={handleGoBack}>Go back</button>
       <h1>Design your own workout</h1>
       <CreateExercise
         eName={eName}

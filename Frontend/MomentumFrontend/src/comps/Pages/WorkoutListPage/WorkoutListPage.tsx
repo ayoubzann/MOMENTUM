@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { deleteWorkout, getAllWorkouts } from "../../../utils";
 import WorkoutList from "./WorkoutList";
 import { Link } from "react-router-dom";
-import {MoodContext} from "../../NumberContext";
+import {MoodContext} from "../../MoodContext";
 
 interface Exercise {
   exerciseName: string;
