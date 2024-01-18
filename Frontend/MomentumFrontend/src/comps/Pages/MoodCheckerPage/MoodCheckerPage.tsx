@@ -1,18 +1,17 @@
 import React, { useContext } from "react";
-import MoodContext from "../../NumberContext";
+import {MoodContext} from "../../NumberContext";
 import { Link } from "react-router-dom";
 
 const MoodCheckerPage = () => {
   const { mood, updateNumber } = useContext(MoodContext);
 
-  const handleSliderChange = (event) => {
+  const handleSliderChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
     const newNumber = parseInt(event.target.value, 10);
     console.log(newNumber);
     updateNumber(newNumber);
   };
-  console.log(mood);
-
+  
   return (
     <div>
       <h1> Hello! </h1>
