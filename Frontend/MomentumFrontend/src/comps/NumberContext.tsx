@@ -1,25 +1,31 @@
-import { createContext, useState } from "react";
+import { createContext, ReactNode, useState } from "react";
 
-const MoodContext = createContext({
-    mood: 10, 
-    updateNumber: (newNumber: number) => {}
-  });
+type MoodContextType = {
+  mood: number;
+  updateNumber: (newNumber: number) => void;
+};
 
-export default MoodContext;
+const MoodContext = createContext<MoodContextType>({
+  mood: 0,
+  updateNumber: (newNumber: number) => {},
+});
 
+type MoodProviderProps = {
+  children: ReactNode;
+};
 
-const MoodProvider = ({children}) => {
+const MoodProvider = ({ children }: MoodProviderProps) => {
   const [mood, setMood] = useState(0);
 
-  const updateNumber = (newNumber) => {
+  const updateNumber = (newNumber: number) => {
     setMood(newNumber);
   };
 
   return (
-    <MoodContext.Provider value={{mood, updateNumber}}>
+    <MoodContext.Provider value={{ mood, updateNumber }}>
       {children}
     </MoodContext.Provider>
-  )
-}
+  );
+};
 
-export {MoodProvider, MoodContext};
+export { MoodProvider, MoodContext };
