@@ -3,12 +3,15 @@ import MoodContext from "../../NumberContext";
 import { Link } from "react-router-dom";
 
 const MoodCheckerPage = () => {
-  const { number, updateNumber } = useContext(MoodContext);
+  const { mood, updateNumber } = useContext(MoodContext);
 
   const handleSliderChange = (event) => {
+    event.preventDefault();
     const newNumber = parseInt(event.target.value, 10);
+    console.log(newNumber);
     updateNumber(newNumber);
   };
+  console.log(mood);
 
   return (
     <div>
@@ -73,11 +76,11 @@ const MoodCheckerPage = () => {
           type="range"
           min="1"
           max="10"
-          value={number}
+          value={mood}
           onChange={handleSliderChange}
           className="w-full"
         />
-        <p>{`Selected Number: ${number}`}</p>
+        <p>{`Selected Number: ${mood}`}</p>
 
         <h2> Remember: our bodies are more able than our minds tell us! </h2>
         <p>
