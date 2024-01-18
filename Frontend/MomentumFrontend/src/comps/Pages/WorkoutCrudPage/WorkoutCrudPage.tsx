@@ -6,8 +6,9 @@ const WorkoutCrudPage = () => {
   const [wName, setWName] = useState("");
   const [wIntensity, setWIntensity] = useState(0);
   const [wLevel, setWLevel] = useState("");
-  // const [eName, setEName] = useState("");
-  // const [eIntensity, setEIntensity] = useState
+  const [eName, setEName] = useState("");
+  const [eIntensity, setEIntensity] = useState
+  const []
 
   return (
     <div>
