@@ -1,13 +1,13 @@
 import React from 'react'
 import WorkoutCard from './WorkoutCard'
 
-const WorkoutList = ({data, onDelete}) => {
+const WorkoutList = ({data, editor, onDelete}) => {
   return (
     <div>
         {data.map((w, index) => {
             return (
                 <div key={index}>
-                    <WorkoutCard onDelete={onDelete} data={w}/>
+                    <WorkoutCard editor={editor} onDelete={onDelete} data={w}/>
                 </div>
             )
         })}

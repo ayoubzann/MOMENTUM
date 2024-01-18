@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 const WorkoutListPage = () => {
   const [workouts, setWorkouts] = useState([]);
+  const [editor, setEditor] = useState(false);
 
   const handleDelete = async (workoutName) => {
     try {
@@ -28,7 +29,8 @@ const WorkoutListPage = () => {
   return (
     <>
       <Link to="/AddWorkouts"> Add Workout</Link>
-      <WorkoutList data={workouts} onDelete={handleDelete} />
+      <button onClick={()=>setEditor(!editor)}> Edit workout list </button>
+      <WorkoutList data={workouts} editor={editor} onDelete={handleDelete} />
     </>
   );
 };
