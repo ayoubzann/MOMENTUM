@@ -1,6 +1,6 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, Children, useState } from "react";
 
-const CreateWorkout = ({wName, setWName, wIntensity, setWIntensity, wLevel, setWLevel}) => {
+const CreateWorkout = ({wName, setWName, wIntensity, setWIntensity, wLevel, setWLevel, handleWSubmit}) => {
 
   const handleIntensityChange = (
     event: ChangeEvent<HTMLInputElement>
@@ -23,7 +23,7 @@ const CreateWorkout = ({wName, setWName, wIntensity, setWIntensity, wLevel, setW
   return (
     <div>
       <h2 className="text-2xl">Create your own workout!</h2>
-      <form className="flex flex-col">
+      <form onSubmit={handleWSubmit} className="flex flex-col">
         <label>
           {" "}
           Workout name:
@@ -52,6 +52,7 @@ const CreateWorkout = ({wName, setWName, wIntensity, setWIntensity, wLevel, setW
             <option value="Advanced"> Advanced </option>
           </select>
         </label>
+        <button type="submit"> Add workout </button>
       </form>
     </div>
   );
