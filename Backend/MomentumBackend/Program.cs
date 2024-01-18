@@ -3,6 +3,7 @@ using MomentumBackend.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddScoped<IDbRepository, DbRepository>();  
 // Add services to the container.
 builder.Services.AddControllers();
 
