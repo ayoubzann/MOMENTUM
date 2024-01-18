@@ -9,5 +9,5 @@ public class Workout
     public string Name { get; set; }
     public int Intensity { get; set; }
     public string Level { get; set; }
-    public List<Exercise>? Exercises {get; set;}
+    public List<Exercise>? Exercises {get; set;} = new List<Exercise>();
 }
