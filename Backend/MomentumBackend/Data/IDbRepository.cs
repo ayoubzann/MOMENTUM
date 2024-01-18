@@ -9,5 +9,9 @@ public interface IDbRepository
     Workout GetWorkoutById(int workoutId);
 
     void UpdateExercise(int exerciseId, ExerciseDto exerciseUpdateDto);
-
+    void DeleteWorkout(int workoutId);
+    void DeleteExercise(int exerciseId);
+    List<WorkoutDto> GetAllWorkouts();
+    List<ExerciseDto> GetAllExercises();
+    ExerciseDto AddExercise(ExerciseDto exerciseCreateDto);
 }

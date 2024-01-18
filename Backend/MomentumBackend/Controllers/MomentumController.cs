@@ -5,7 +5,7 @@ using MomentumBackend.Models;
 namespace MomentumBackend.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("[controller]/api")]
 public class MomentumController : ControllerBase
 {
 
@@ -15,19 +15,55 @@ public class MomentumController : ControllerBase
         _repo = repo;
     }
 
-    [HttpPost]
-    public IActionResult CreateWorkout([FromBody] WorkoutDto workoutDto)
+    [HttpGet("getAllExercises")]
+    public IActionResult GetAllExercises()
     {
-        if (workoutDto == null)
-        {
-            return BadRequest("Invalid request. Please add a workout");
-        }
-
-        var workoutAdded = _repo.AddWorkout(workoutDto);
-        return Ok("Successfully added workout!");
+        List<ExerciseDto> exerciseDtos = _repo.GetAllExercises();
+        return Ok(exerciseDtos);
     }
 
-    [HttpGet("{workoutId}")]
+    [HttpPost("exercises/create")]
+    public IActionResult CreateExercise([FromBody] ExerciseDto exerciseDto)
+    {
+        if (exerciseDto == null)
+        {
+            return BadRequest("Invalid request. Please add exercise data.");
+        }
+
+        _repo.AddExercise(exerciseDto);
+        return Ok("Successfully added exercise!");
+    }
+
+    [HttpPut("exercises/Update/{exerciseId}")]
+    public IActionResult UpdateExercise(int exerciseId, [FromBody] ExerciseDto exerciseUpdateDto)
+    {
+        if (exerciseUpdateDto == null)
+        {
+            return BadRequest("Data is incorrectly formatted in the request. Please try again.");
+        }
+        _repo.UpdateExercise(exerciseId, exerciseUpdateDto);
+        return Ok("Exercise updated successfully");
+    }
+
+    [HttpDelete("exercises/delete/{exerciseId}")]
+    public IActionResult DeleteExercise(int exerciseId)
+    {
+        if (exerciseId == null)
+        {
+            return BadRequest("Please add an ID to delete.");
+        }
+        _repo.DeleteExercise(exerciseId);
+        return Ok("Exercise deleted successfully");
+    }
+
+    [HttpGet("getAllWorkouts")]
+    public IActionResult GetAllWorkouts()
+    {
+        List<WorkoutDto> workoutDtos = _repo.GetAllWorkouts();
+        return Ok(workoutDtos);
+    }
+
+    [HttpGet("workouts/{workoutId}")]
     public IActionResult GetWorkout(int workoutId)
     {
         Workout workout = _repo.GetWorkoutById(workoutId);
@@ -56,15 +92,36 @@ public class MomentumController : ControllerBase
         return Ok(workoutDto);
     }
 
-    [HttpPut("{exerciseId}")]
-    public IActionResult UpdateExercise(int exerciseId, [FromBody] ExerciseDto exerciseUpdateDto)
+    [HttpPost("workouts/create")]
+    public IActionResult CreateWorkout([FromBody] WorkoutDto workoutDto)
     {
-        if(exerciseUpdateDto == null)
+        if (workoutDto == null)
         {
-            return BadRequest("Data is incorrectly formatted in the request. Please try again.");
+            return BadRequest("Invalid request. Please add a workout");
         }
-            _repo.UpdateExercise(exerciseId, exerciseUpdateDto);
-            return Ok("Exercise updated successfully");
+
+        _repo.AddWorkout(workoutDto);
+        return Ok("Successfully added workout!");
     }
+
+    [HttpDelete("workouts/delete/{workoutId}")]
+    public IActionResult DeleteWorkout(int workoutId)
+    {
+        if (workoutId == null)
+        {
+            return BadRequest("Please add an ID to delete.");
+        }
+        _repo.DeleteWorkout(workoutId);
+        return Ok("Workout deleted successfully");
+    }
+
+
+
+
+
+
+
 }
+
+
 
