@@ -22,10 +22,9 @@ const CreateWorkout = ({wName, setWName, wIntensity, setWIntensity, wLevel, setW
 
   return (
     <div>
-      <h2 className="text-2xl">Create your own workout!</h2>
+      <h2 className="text-2xl">Finishing touches...</h2>
       <form onSubmit={handleWSubmit} className="flex flex-col">
         <label>
-          {" "}
           Workout name:
           <input
             value={wName}
@@ -35,7 +34,6 @@ const CreateWorkout = ({wName, setWName, wIntensity, setWIntensity, wLevel, setW
           />
         </label>
         <label>
-          {" "}
           Intensity (1-10):
           <input
             value={wIntensity}

@@ -1,14 +1,13 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import CreateWorkout from "./CreateWorkout";
 import CreateExercise from "./CreateExercise";
-import { getAllExercises, getAllWorkouts, postWorkout } from "../../../utils";
-import ExerciseCard from "../WorkoutListPage/ExerciseCard";
+import { getAllExercises, postWorkout } from "../../../utils";
 import ExerciseList from "../WorkoutListPage/ExerciseList";
 
 const WorkoutCrudPage = () => {
   const [wName, setWName] = useState("");
   const [wIntensity, setWIntensity] = useState(0);
-  const [wLevel, setWLevel] = useState("");
+  const [wLevel, setWLevel] = useState("Beginner");
   const [eName, setEName] = useState("");
   const [eIntensity, setEIntensity] = useState(0);
   const [sets, setSets] = useState(0);
@@ -28,7 +27,7 @@ const WorkoutCrudPage = () => {
 
   const handleESubmit = (event) => {
     event.preventDefault();
-    let exerciseArr = [
+    const exerciseArr = [
       ...exerciseList,
       {
         exerciseName: eName,
@@ -49,12 +48,17 @@ const WorkoutCrudPage = () => {
       exercises: exerciseList,
     };
     setWorkout(workoutToAdd);
-    postWorkout(workout);
   };
+
+  useEffect(() => {
+    if (Object.keys(workout).length > 0) {
+      postWorkout(workout);
+    }
+  }, [workout]);
 
   return (
     <div>
-    <h1>WorkoutCrudPage</h1>
+    <h1>Design your own workout</h1>
     <CreateExercise
       eName={eName}
       setEName={setEName}

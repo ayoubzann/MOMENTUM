@@ -45,14 +45,14 @@ public class MomentumController : ControllerBase
         return Ok("Exercise updated successfully");
     }
 
-    [HttpDelete("exercises/delete/{exerciseId}")]
-    public IActionResult DeleteExercise(int exerciseId)
+    [HttpDelete("exercises/delete/{exerciseName}")]
+    public IActionResult DeleteExercise(string exerciseName)
     {
-        if (exerciseId == null)
+        if (exerciseName == null)
         {
             return BadRequest("Please add an ID to delete.");
         }
-        _repo.DeleteExercise(exerciseId);
+        _repo.DeleteExercise(exerciseName);
         return Ok("Exercise deleted successfully");
     }
 
@@ -104,14 +104,14 @@ public class MomentumController : ControllerBase
         return Ok("Successfully added workout!");
     }
 
-    [HttpDelete("workouts/delete/{workoutId}")]
-    public IActionResult DeleteWorkout(int workoutId)
+    [HttpDelete("workouts/delete/{workoutName}")]
+    public IActionResult DeleteWorkout(string workoutName)
     {
-        if (workoutId == null)
+        if (workoutName == null)
         {
             return BadRequest("Please add an ID to delete.");
         }
-        _repo.DeleteWorkout(workoutId);
+        _repo.DeleteWorkout(workoutName);
         return Ok("Workout deleted successfully");
     }
 }

@@ -60,17 +60,17 @@ public class DbRepository : IDbRepository
         _context.SaveChanges();
     }
 
-    public void DeleteWorkout(int workoutId)
+    public void DeleteWorkout(string workoutName)
     {
-        Workout existingWorkout = _context.Workouts.FirstOrDefault(w => w.Id == workoutId);
+        Workout existingWorkout = _context.Workouts.FirstOrDefault(w => w.Name == workoutName);
 
         _context.Workouts.Remove(existingWorkout);
         _context.SaveChanges();
     }
 
-        public void DeleteExercise(int exerciseId)
+        public void DeleteExercise(string exerciseName)
     {
-        Exercise existingExercise = _context.Exercises.FirstOrDefault(e => e.Id == exerciseId);
+        Exercise existingExercise = _context.Exercises.FirstOrDefault(e => e.Name == exerciseName);
 
         _context.Exercises.Remove(existingExercise);
         _context.SaveChanges();
