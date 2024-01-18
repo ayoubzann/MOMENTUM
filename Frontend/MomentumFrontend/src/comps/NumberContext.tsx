@@ -1,7 +1,7 @@
 import { createContext, useState } from "react";
 
 const MoodContext = createContext({
-    number: 0, 
+    mood: 10, 
     updateNumber: (newNumber: number) => {}
   });
 
@@ -9,14 +9,14 @@ export default MoodContext;
 
 
 const MoodProvider = ({children}) => {
-  const [number, setNumber] = useState(0);
+  const [mood, setMood] = useState(0);
 
   const updateNumber = (newNumber) => {
-    setNumber(newNumber);
+    setMood(newNumber);
   };
 
   return (
-    <MoodContext.Provider value={{number, updateNumber}}>
+    <MoodContext.Provider value={{mood, updateNumber}}>
       {children}
     </MoodContext.Provider>
   )
