@@ -17,7 +17,12 @@ builder.Services.AddDbContext<MomentumDbContext>(options =>
 
 var app = builder.Build();
 
-
+app.UseCors(policy =>
+        {
+            policy.AllowAnyOrigin()
+                  .AllowAnyMethod()
+                  .AllowAnyHeader();
+        });
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
