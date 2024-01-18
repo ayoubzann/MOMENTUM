@@ -37,4 +37,23 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+
+    try
+    {
+        var dbContext = services.GetRequiredService<MomentumDbContext>();
+        
+        dbContext.Database.Migrate();
+
+        var dbSeeder = services.GetRequiredService<IDbRepository>();
+
+        dbSeeder.SeedData();
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Error occurred during database seeding: {ex.Message}");
+    }
+}
 app.Run();

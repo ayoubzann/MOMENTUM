@@ -99,10 +99,8 @@ public class DbRepository : IDbRepository
 
     public List<ExerciseDto> GetAllExercises()
     {
-        // Retrieve all exercises from the database
         List<Exercise> exercises = _context.Exercises.ToList();
 
-        // Map exercises to ExerciseDto using your mapping logic
         var exerciseDtos = exercises.Select(exercise => new ExerciseDto
         {
             ExerciseName = exercise.Name,
@@ -129,6 +127,88 @@ public class DbRepository : IDbRepository
         return exerciseCreateDto;
     }
 
+public void SeedData()
+    {
+        string[] workoutNames = { "Strength Builder", "Cardio Blast", "Flexibility Focus", "Endurance Enhancer", "Core Crusher", "HIIT Havoc", "Power Play", "Balance Booster", "Speed Sprint" };
 
+        string[] exerciseNames = { "Push-up", "Pull-up", "Squat", "Lunges", "Plank", "Burpee", "Mountain Climber", "Deadlift", "Bicep Curl", "Tricep Dip", "Jumping Jacks", "Russian Twist" };
+
+        for (int i = 1; i <= 3; i++)
+        {
+            var workout = new Workout
+            {
+                Name = workoutNames[i - 1],
+                Intensity = new Random().Next(1, 5),
+                Level = "Beginner" 
+            };
+
+            for (int j = 0; j < new Random().Next(4, 7); j++)
+            {
+                var exercise = new Exercise
+                {
+                    Name = exerciseNames[j % exerciseNames.Length],
+                    Intensity = new Random().Next(1, 5),
+                    Sets = 3,
+                    Reps = 10
+                };
+
+                workout.Exercises.Add(exercise);
+            }
+
+            _context.Workouts.Add(workout);
+        }
+
+        for (int i = 4; i <= 6; i++)
+        {
+            var workout = new Workout
+            {
+                Name = workoutNames[i - 1],
+                Intensity = new Random().Next(5, 8),
+                Level = "Intermediate"
+            };
+
+            for (int j = 0; j < new Random().Next(4, 7); j++)
+            {
+                var exercise = new Exercise
+                {
+                    Name = exerciseNames[(j + 3) % exerciseNames.Length],
+                    Intensity = new Random().Next(5, 8),
+                    Sets = 3,
+                    Reps = 10
+                };
+
+                workout.Exercises.Add(exercise);
+            }
+
+            _context.Workouts.Add(workout);
+        }
+
+        for (int i = 7; i <= 9; i++)
+        {
+            var workout = new Workout
+            {
+                Name = workoutNames[i - 1],
+                Intensity = new Random().Next(8, 11),
+                Level = "Advanced" 
+            };
+
+            for (int j = 0; j < new Random().Next(4, 7); j++)
+            {
+                var exercise = new Exercise
+                {
+                    Name = exerciseNames[(j + 6) % exerciseNames.Length],
+                    Intensity = new Random().Next(8, 11),
+                    Sets = 3,
+                    Reps = 10
+                };
+
+                workout.Exercises.Add(exercise);
+            }
+
+            _context.Workouts.Add(workout);
+        }
+
+        _context.SaveChanges();
+    }
 
 }

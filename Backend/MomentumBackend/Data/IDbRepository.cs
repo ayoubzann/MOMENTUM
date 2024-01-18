@@ -14,4 +14,6 @@ public interface IDbRepository
     List<WorkoutDto> GetAllWorkouts();
     List<ExerciseDto> GetAllExercises();
     ExerciseDto AddExercise(ExerciseDto exerciseCreateDto);
+    
+    void SeedData();
 }
