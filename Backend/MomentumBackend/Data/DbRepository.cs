@@ -12,7 +12,7 @@ public class DbRepository : IDbRepository
         _context = context;
     }
 
-    public Workout AddWorkout(CreateWorkoutDto workoutToAdd)
+    public Workout AddWorkout(WorkoutDto workoutToAdd)
     {
         
         Workout newWorkout = new Workout{
@@ -46,5 +46,17 @@ public class DbRepository : IDbRepository
         return _context.Workouts
             .Include(w => w.Exercises)
             .FirstOrDefault(w => w.Id == workoutId);
+    }
+
+   public void UpdateExercise(int exerciseId, ExerciseDto exerciseUpdateDto)
+    {
+        Exercise existingExercise = _context.Exercises.FirstOrDefault(e => e.Id == exerciseId);
+
+        existingExercise.Name = exerciseUpdateDto.ExerciseName;
+        existingExercise.Intensity = exerciseUpdateDto.ExerciseIntensity;
+        existingExercise.Sets = exerciseUpdateDto.ExerciseSets;
+        existingExercise.Reps = exerciseUpdateDto.ExerciseReps;
+
+        _context.SaveChanges();
     }
 }

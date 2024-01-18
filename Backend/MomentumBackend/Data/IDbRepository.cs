@@ -5,7 +5,9 @@ namespace MomentumBackend.Data;
 
 public interface IDbRepository
 {
-    Workout AddWorkout(CreateWorkoutDto workoutToAdd);
+    Workout AddWorkout(WorkoutDto workoutToAdd);
     Workout GetWorkoutById(int workoutId);
+
+    void UpdateExercise(int exerciseId, ExerciseDto exerciseUpdateDto);
 
 }
