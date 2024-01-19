@@ -83,6 +83,13 @@ a:hover {
   color: #535bf2;
 }
 
+.momentum{
+  background: #CF0404;
+background: linear-gradient(to right, #CF0404 0%, #CFB406 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+
 body {
   margin: 0;
   display: flex;
@@ -125,7 +132,7 @@ button:focus-visible {
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
-    background-color: #ffffff;
+    background-color: #fefaf3;
   }
   a:hover {
     color: #747bff;
