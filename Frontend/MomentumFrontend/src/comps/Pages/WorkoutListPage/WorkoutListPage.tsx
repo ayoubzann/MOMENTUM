@@ -56,9 +56,13 @@ const WorkoutListPage: React.FC = () => {
   const filteredWorkouts: Workout[] = filterWorkouts();
 
   return (
-    <div className="flex flex-col">
-      <Link to="/AddWorkouts" className="bg-green-100 my-4 p-2 text-black"> <p className="text-xl">Add Workout</p></Link>
-      <button className="text-xl bg-yellow-100" onClick={() => setEditor(!editor)}> Edit workout list </button>
+    <div className="flex flex-col w-96 items-center floatInPages">
+      <div className="flex justify-center">
+      <Link to="/AddWorkouts" className="bg-secondary w-28 text-center py-auto flex items-center m-2 justify-center hover:bg-green-500 h-12 hover:text-text rounded-xl text-text align-middle"> <p className="text-xl">Add </p></Link>
+      <button className="text-xl rounded-xl flex items-center justify-center bg-red-300 w-28 h-12 m-2  hover:bg-red-500" onClick={() => setEditor(!editor)}> Remove  </button>
+
+      </div>
+      <h1 className="momentum mt-4">momentum</h1>
       <WorkoutList data={filteredWorkouts} editor={editor} onDelete={handleDelete} />
     </div>
   );

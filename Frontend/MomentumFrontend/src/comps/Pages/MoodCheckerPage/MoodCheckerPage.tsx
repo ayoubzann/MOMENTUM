@@ -14,8 +14,8 @@ const MoodCheckerPage = () => {
   return (
     <div className="w-96 mx-auto p-8 rounded-2xl">
       <h1 className="text-5xl text-slate-700 mb-2">Let's build</h1>
-      <h2 className="text-6xl mb-4 momentum animate-bounce ">momentum</h2>
-      <form className="flex flex-col floatIn mb-4 ">
+      <h2 className="text-6xl mb-4 momentum animated-header">momentum</h2>
+      <form className="flex flex-col floatInFirst mb-4 ">
         <div className="bg-primary drop-shadow-2xl mb-5 text-text rounded-2xl">
           <h2 className="mb-2 text-4xl p-3 ">How are you feeling today?</h2>
           <div className="flex flex-col p-4 rounded-2xl mb-4">
@@ -92,7 +92,7 @@ const MoodCheckerPage = () => {
           </h2>
           <h2 className=" text-2xl">On that note,</h2>
           <h2 className="text-2xl">let's build</h2>
-          <h1 className="text-4xl momentum animate-bounce m-2">momentum</h1>
+          <h1 className="text-4xl momentum mb-6">momentum</h1>
           <Link to="/workouts">
             <h2 className="text-3xl bg-primary drop-shadow-lg rounded-full p-4 text-black">
               Let's go! 🚀

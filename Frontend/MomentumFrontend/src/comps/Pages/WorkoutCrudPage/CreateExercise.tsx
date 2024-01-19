@@ -29,17 +29,17 @@ const CreateExercise: React.FC<CreateExerciseProps> = ({
   };
 
   return (
-    <div className=" p-5 w-96 rounded-lg bg-orange-100">
-      <h2 className="text-2xl p-4">Create or Select an exercise</h2>
+    <div className=" p-5 w-96 rounded-lg drop-shadow-xl bg-primary">
+      <h2 className="text-4xl p-4">Create or Select an exercise</h2>
       <form className="flex flex-col" onSubmit={handleESubmit}>
         <label className="flex justify-center">
           <input
-          className="m-2"
+          className="m-2 "
             type="checkbox"
             checked={useExistingExercise}
             onChange={handleUseExistingExerciseChange}
           />
-          <p className="text-xl">Use existing exercise</p>
+          <h2 className="text-xl">Use existing exercise</h2>
         </label>
         {useExistingExercise ? (
           <label className="flex flex-col">
@@ -61,8 +61,8 @@ const CreateExercise: React.FC<CreateExerciseProps> = ({
         ) : (
           <>
           <br/>
-            <label className="p-2 flex flex-col justify-center">
-              Exercise name:
+            <label className="p-2 flex flex-col justify-center drop-shadow-lg">
+              <h3 className="text-xl font-bold">Exercise name:</h3>
               <input
                 onChange={(e) => setEName(e.target.value)}
                 value={eName}
@@ -70,8 +70,8 @@ const CreateExercise: React.FC<CreateExerciseProps> = ({
                 type="text"
               />
             </label>
-            <label className="p-2 flex flex-col justify-center">
-              Intensity (1-10):
+            <label className="p-2 flex flex-col justify-center drop-shadow-lg">
+             <h3 className="text-xl font-bold"> Intensity (1-10):</h3>
               <input
                 onChange={(e) => setEIntensity(e.target.value)}
                 value={eIntensity}
@@ -79,8 +79,8 @@ const CreateExercise: React.FC<CreateExerciseProps> = ({
                 type="number"
               />
             </label>
-            <label className="p-2 flex flex-col justify-center">
-              Sets:
+            <label className="p-2 flex flex-col justify-center drop-shadow-lg">
+             <h3 className="text-xl font-bold"> Sets:</h3>
               <input
                 onChange={(e) => setSets(e.target.value)}
                 value={sets}
@@ -88,8 +88,8 @@ const CreateExercise: React.FC<CreateExerciseProps> = ({
                 type="number"
               />
             </label>
-            <label className="p-2 flex flex-col justify-center">
-              Reps:
+            <label className="p-2 flex flex-col justify-center drop-shadow-lg">
+              <h3 className="text-xl font-bold">Reps:</h3>
               <input
                 onChange={(e) => setReps(e.target.value)}
                 value={reps}
@@ -100,7 +100,7 @@ const CreateExercise: React.FC<CreateExerciseProps> = ({
           </>
         )}
         <button type="submit">
-          <h2 className="text-lg p-2 rounded-lg bg-orange-200">
+          <h2 className="text-lg p-2 rounded-lg bg-secondary">
           {useExistingExercise ? "Add existing exercise" : "Add new exercise"}
           </h2>
         </button>

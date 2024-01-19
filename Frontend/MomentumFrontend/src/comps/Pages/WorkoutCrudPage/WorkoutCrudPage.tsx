@@ -72,9 +72,9 @@ const WorkoutCrudPage: React.FC = () => {
   }, [workout]);
 
   return (
-    <div className="flex flex-col w-3/4 mx-auto items-center justify-center">
-      <button onClick={handleGoBack}>Go back</button>
-      <h1 className="m-4">Design your own workout</h1>
+    <div className="flex floatInPages flex-col w-96 mx-auto items-center justify-center">
+      <button className="bg-primary text-xl" onClick={handleGoBack}>Go back</button>
+      <h1 className="m-4 momentum">Design your own workout</h1>
       <br></br>
       <CreateExercise
         eName={eName}
@@ -88,8 +88,8 @@ const WorkoutCrudPage: React.FC = () => {
         handleESubmit={handleESubmit}
         existingExercises={existingExercises}
       />
-      <div className="bg-orange-100 m-5 w-96 rounded-lg p-4">
-        <h2 className="text-xl">Current exercises:</h2>
+      <div className="bg- m-5 w-96 bg-secondary drop-shadow-lg rounded-lg p-4">
+        <h2 className="text-2xl">Current exercises:</h2>
         <ExerciseList data={exerciseList} />
       </div>
       <CreateWorkout

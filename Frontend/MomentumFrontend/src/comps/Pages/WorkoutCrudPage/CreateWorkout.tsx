@@ -32,7 +32,7 @@ const CreateWorkout: React.FC<CreateWorkoutProps> = ({
   };
 
   return (
-    <div className="w-96 bg-orange-100 p-5 rounded-lg flex flex-col justify-center">
+    <div className="w-96 bg-accent p-5 rounded-lg drop-shadow-xl flex flex-col justify-center">
       <h2 className="text-2xl">Finishing touches...</h2>
       <form onSubmit={handleWSubmit} className="flex flex-col">
         <label className="p-2 flex flex-col justify-center text-xl">
@@ -66,7 +66,7 @@ const CreateWorkout: React.FC<CreateWorkoutProps> = ({
           </select>
         </label>
         <br/>
-        <button className="bg-orange-200" type="submit"> <h2 className="text-lg">Add workout</h2> </button>
+        <button className="bg-secondary" type="submit"> <h2 className="text-lg">Add workout</h2> </button>
       </form>
     </div>
   );

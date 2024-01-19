@@ -13,7 +13,7 @@ const ActiveWorkoutPage: React.FC = () => {
 
   useEffect(() => {
     let interval: NodeJS.Timeout;
-
+    
     if (isStarted && currentSet <= workout.exercises[0].exerciseSets) {
       interval = setInterval(() => {
         setTimer((prevTimer) => {
@@ -44,15 +44,12 @@ const ActiveWorkoutPage: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
-      <h2 className="text-xl">Selected Workout: </h2>
-        <h1 className="text-orange-600">{workout.workoutName}</h1>
-      <h2>Intensity: {workout.workoutIntensity}</h2>
-      <h2>Workout Level: {workout.workoutLevel}</h2>
-      <button className="bg-emerald-200" onClick={handleStartClick} disabled={isStarted}>
-        Start Workout
+    <div className="flex flex-col items-center justify-center bg-neutral-300 drop-shadow-lg h-fit p-8 rounded-xl floatInPages">
+        <h1 className="momentum pb-8">{workout.workoutName}</h1>
+      <button className="bg-green-400" onClick={handleStartClick} disabled={isStarted}>
+        <h2>START</h2>
       </button>
-      <h2 className="text-xl p-10">Time remaining: <h1 className="text-orange-500">{timer}</h1></h2>
+      <h2 className="text-xl p-10 rounded-fullm-5">Time remaining: <h1 className="text-orange-500">{timer}</h1></h2>
       <h2 className="text-xl">Exercises:</h2>
       {workout.exercises.map((exercise, index) => (
         <div key={index}>
@@ -65,10 +62,10 @@ const ActiveWorkoutPage: React.FC = () => {
         </div>
       ))}
       <button className="m-4 bg-red-300" onClick={handleFinishClick} disabled={!isStarted}>
-        <h2 className="text-xl">{timer === 0 ? "Next set/break" : "Stop Workout"}</h2>
+        <h2 className="text-xl">{timer === 0 ? "Next set/break" : "Stop"}</h2>
       </button>
-      <button className="m-4 bg-orange-200" onClick={handleFinishWorkout} disabled={isStarted}>
-        <h2 className="text-xl">Finish Workout</h2>
+      <button className="m-4 bg-green-400" onClick={handleFinishWorkout} disabled={isStarted}>
+        <h2 className="text-xl ">Finish Workout</h2>
       </button>
     </div>
   );

@@ -28,11 +28,11 @@ const ActiveWorkoutCard: React.FC<ActiveWorkoutCardProps> = ({
 
           return (
             <div
-              className={`flex rounded-3xl justify-between p-3 ${
+              className={`flex  rounded-3xl justify-between p-3 ${
                 isRunning
                   ? isBreak
-                    ? "bg-yellow-200"
-                    : "bg-green-200"
+                    ? "bg-yellow-300"
+                    : "bg-green-400"
                   : "bg-gray-50"
               } items-center cursor-pointer`}
               key={index}
@@ -41,7 +41,7 @@ const ActiveWorkoutCard: React.FC<ActiveWorkoutCardProps> = ({
               <p className="text-xl">{item.exerciseName}</p>
               {icon}
               {isFocused && isRunning && (
-                <div className="border-b p-5 text-xl">
+                <div className="border-b p-5text-xl">
                   <h2>Intensity: {item.exerciseIntensity}</h2>
                   <p>Sets: {item.exerciseSets}</p>
                   <p>Reps: {item.exerciseReps}</p>
