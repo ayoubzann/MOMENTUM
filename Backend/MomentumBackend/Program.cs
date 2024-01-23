@@ -8,8 +8,11 @@ builder.Services.AddScoped<IDbRepository, DbRepository>();
 // Add services to the container.
 builder.Services.AddControllers();
 
+var connectionString = builder.Configuration["ConnectionStrings:MomentumDbConnstring"];
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+
 builder.Services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
