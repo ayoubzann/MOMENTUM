@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MomentumBackend")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f0ad6f9e1ac20a7b65cef7c13fdb75366ec41424")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8061e025e2e3f0a1488a5402b7f6bec879adbe53")]
 [assembly: System.Reflection.AssemblyProductAttribute("MomentumBackend")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MomentumBackend")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
